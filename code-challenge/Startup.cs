@@ -34,6 +34,9 @@ namespace code_challenge
             services.AddScoped<IEmployeeRepository,EmployeeRespository>();
             services.AddTransient<EmployeeDataSeeder>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ICompensationRepository, CompensationRepository>();
+            services.AddTransient<CompensationDataSeeder>();
+            services.AddScoped<ICompensationService, CompensationService>();
             services.AddMvc();
         }
 

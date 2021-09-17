@@ -46,7 +46,7 @@ namespace challenge.Controllers
             return Ok(employee);
         }
 
-        [HttpGet("{id}/DirectReports", Name = "ReportsById")]
+        [HttpGet("{id}/DirectReports", Name = "getReportsById")]
         public IActionResult GetEmployeeReportsById(String id)
         {
             _logger.LogDebug($"Received employee get reports request for '{id}'");
@@ -63,21 +63,30 @@ namespace challenge.Controllers
         }
 
         //TODO: Save Compensation creation details
-        [HttpPost("{id}/Compensation", Name = "Compensation")]
+        [HttpPost("{id}/Compensation", Name = "createCompensation")]
         public IActionResult CreateCompensation(String id, [FromBody]Compensation comp)
         {
             _logger.LogDebug($"Received employee create compensation request for '{id}'");
 
-            return Ok(comp);
-            
+            _compensationService.Create(comp);
+
+            //send off newly created comp, utilizing the getCompensationById functionality to display confirmation of creation
+            return CreatedAtRoute("getCompensation", new { id = comp.EmployeeId }, comp);
+
         }
 
-        [HttpGet("{id}/Compensation", Name = "Compensation")]
+        [HttpGet("{id}/Compensation", Name = "getCompensation")]
         public IActionResult GetCompensationById(String id)
         {
             _logger.LogDebug($"Received employee get compensation request for '{id}'");
 
-            return null;
+            var compensation = _compensationService.GetById(id);
+            if(compensation == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(compensation);
 
         }
 
