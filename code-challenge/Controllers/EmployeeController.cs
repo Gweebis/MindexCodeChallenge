@@ -54,9 +54,14 @@ namespace challenge.Controllers
             var employee = _employeeService.GetById(id);
             ReportingStructure report = new ReportingStructure(employee);
 
-            foreach (Employee directReport in employee.DirectReports)
+            if(employee.DirectReports != null)
             {
-                //go through each employee's direct reports in here - assuming we get passed employee and not employeeID?   
+                foreach (Employee directReport in employee.DirectReports)
+                {
+                    //go through each employee's direct reports in here - assuming we get passed employee and not employeeID?
+                    //go through this recursively?
+                    report.numberOfReports++;
+                }
             }
 
             return Ok(report);//return reporting structure
@@ -103,5 +108,13 @@ namespace challenge.Controllers
 
             return Ok(newEmployee);
         }
+
+        #region helper-functions
+        public Employee getDirectReports()
+        {
+            return null;
+        }
+
+        #endregion
     }
 }
