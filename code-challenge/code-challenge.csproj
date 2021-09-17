@@ -20,4 +20,6 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties resources_4compensationseeddata_1json__JsonSchema="https://appsemble.app/api.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

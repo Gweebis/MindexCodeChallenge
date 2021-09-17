@@ -7,8 +7,8 @@ namespace challenge.Models
 {
     public class Compensation
     {
-        public Employee employee { get; set; }
-        public int salary { get; set; }
-        public DateTime effectiveDate { get; set; }
+        public Employee Employee { get; set; }
+        public int Salary { get; set; }
+        public DateTime EffectiveDate { get; set; }
     }
 }
