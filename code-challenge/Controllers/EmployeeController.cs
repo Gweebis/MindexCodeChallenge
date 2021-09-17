@@ -14,11 +14,13 @@ namespace challenge.Controllers
     {
         private readonly ILogger _logger;
         private readonly IEmployeeService _employeeService;
+        private readonly ICompensationService _compensationService;
 
-        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeService)
+        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeService, ICompensationService compensationService)
         {
             _logger = logger;
             _employeeService = employeeService;
+            _compensationService = compensationService;
         }
 
         [HttpPost]
