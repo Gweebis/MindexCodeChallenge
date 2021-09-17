@@ -60,6 +60,25 @@ namespace challenge.Controllers
             return Ok(report);//return reporting structure
         }
 
+        //TODO: Save Compensation creation details
+        [HttpPost("{id}/Compensation", Name = "Compensation")]
+        public IActionResult CreateCompensation(String id, [FromBody]Compensation comp)
+        {
+            _logger.LogDebug($"Received employee create compensation request for '{id}'");
+
+            return Ok(comp);
+            
+        }
+
+        [HttpGet("{id}/Compensation", Name = "Compensation")]
+        public IActionResult GetCompensationById(String id)
+        {
+            _logger.LogDebug($"Received employee get compensation request for '{id}'");
+
+            return null;
+
+        }
+
         [HttpPut("{id}")]
         public IActionResult ReplaceEmployee(String id, [FromBody]Employee newEmployee)
         {
