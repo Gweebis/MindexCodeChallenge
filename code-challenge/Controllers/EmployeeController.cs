@@ -44,7 +44,7 @@ namespace challenge.Controllers
             return Ok(employee);
         }
 
-        [HttpGet("{id}", Name = "getEmployeeReportsById")]
+        [HttpGet("{id}/DirectReports", Name = "ReportsById")]
         public IActionResult GetEmployeeReportsById(String id)
         {
             _logger.LogDebug($"Received employee get reports request for '{id}'");
@@ -52,9 +52,9 @@ namespace challenge.Controllers
             var employee = _employeeService.GetById(id);
             ReportingStructure report = new ReportingStructure(employee);
 
-            foreach(Employee directReport in employee.DirectReports)
+            foreach (Employee directReport in employee.DirectReports)
             {
-                //go through each employee's direct reports in here - assuming we get passed employee and not employeeID?
+                //go through each employee's direct reports in here - assuming we get passed employee and not employeeID?   
             }
 
             return Ok(report);//return reporting structure
