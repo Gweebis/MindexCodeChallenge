@@ -46,6 +46,7 @@ namespace challenge.Controllers
             return Ok(employee);
         }
 
+        //GET request that gets the direct reports by utilizing recursive helper function
         [HttpGet("{id}/DirectReports", Name = "getReportsById")]
         public IActionResult GetEmployeeReportsById(String id)
         {
@@ -62,7 +63,6 @@ namespace challenge.Controllers
             return Ok(report);//return reporting structure
         }
 
-        //TODO: Save Compensation creation details
         [HttpPost("{id}/Compensation", Name = "createCompensation")]
         public IActionResult CreateCompensation(String id, [FromBody]Compensation comp)
         {
@@ -105,6 +105,7 @@ namespace challenge.Controllers
         }
 
         #region helper-functions
+        //recursive function used to traverse the amount
         public int getDirectReports(Employee employee)
         {
             if(employee.DirectReports != null)
