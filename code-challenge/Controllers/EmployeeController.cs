@@ -56,12 +56,7 @@ namespace challenge.Controllers
 
             if(employee.DirectReports != null)
             {
-                foreach (Employee directReport in employee.DirectReports)
-                {
-                    //go through each employee's direct reports in here - assuming we get passed employee and not employeeID?
-                    //go through this recursively?
-                    report.numberOfReports++;
-                }
+                report.numberOfReports = getDirectReports(employee);
             }
 
             return Ok(report);//return reporting structure
@@ -110,9 +105,17 @@ namespace challenge.Controllers
         }
 
         #region helper-functions
-        public Employee getDirectReports()
+        public int getDirectReports(Employee employee)
         {
-            return null;
+            if(employee.DirectReports != null)
+            {
+                foreach(Employee directReport in employee.DirectReports)
+                {
+                    return 1 + getDirectReports(directReport);
+                }
+            }
+
+            return 0;
         }
 
         #endregion
