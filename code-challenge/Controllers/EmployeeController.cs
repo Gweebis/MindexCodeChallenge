@@ -63,6 +63,7 @@ namespace challenge.Controllers
             return Ok(report);//return reporting structure
         }
 
+        //POST request that creates a compensation with a unique ID by being given compensation details from the request body along with an employee ID in the query
         [HttpPost("{id}/Compensation", Name = "createCompensation")]
         public IActionResult CreateCompensation(String id, [FromBody]Compensation comp)
         {
@@ -75,6 +76,8 @@ namespace challenge.Controllers
 
         }
 
+        //GET request that searches up a compensation by employee ID, not compensation ID
+        //Compensation ID is used as a primary key for the database but not used as a reference point as the employee ID is used as a reference point for everything else
         [HttpGet("{id}/Compensation", Name = "getCompensation")]
         public IActionResult GetCompensationById(String id)
         {
