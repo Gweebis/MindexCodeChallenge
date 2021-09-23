@@ -111,13 +111,13 @@ namespace challenge.Controllers
         //recursive function used to traverse the amount
         public int getDirectReports(Employee employee)
         {
-            if(employee.DirectReports != null)
+/*            if(employee.DirectReports != null)
             {
                 foreach(Employee directReport in employee.DirectReports)
                 {
                     return 1 + getDirectReports(directReport);
                 }
-            }
+            }*/
 
             return 0;
         }

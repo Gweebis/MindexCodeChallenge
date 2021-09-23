@@ -26,6 +26,7 @@ namespace challenge.Data
                 _employeeContext.Employees.AddRange(employees);
 
                 await _employeeContext.SaveChangesAsync();
+                var savedEmployees = _employeeContext.Employees.AsQueryable().ToList();
             }
         }
 
