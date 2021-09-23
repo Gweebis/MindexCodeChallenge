@@ -107,6 +107,8 @@ namespace challenge.Controllers
             return Ok(newEmployee);
         }
 
+        //Test endpoint used solely for bypassing EF issues with regards to nested complex classes not being recognized.
+        //Used to directly put in an employee with the direct reports populated.
         [HttpPut("{id}/DirectReports")]
         public IActionResult TestGetEmployeeDirectReports(String id, [FromBody] Employee employee)
         {
