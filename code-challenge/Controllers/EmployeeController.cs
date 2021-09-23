@@ -107,17 +107,33 @@ namespace challenge.Controllers
             return Ok(newEmployee);
         }
 
+        [HttpPut("{id}/DirectReports")]
+        public IActionResult TestGetEmployeeDirectReports(String id, [FromBody] Employee employee)
+        {
+            _logger.LogDebug($"Testing get direct reports for '{id}'");
+
+            ReportingStructure report = new ReportingStructure(employee);
+
+            if (employee.DirectReports != null)
+            {
+                report.numberOfReports = getDirectReports(employee);
+            }
+
+            return Ok(report);//return reporting structure
+
+        }
+
         #region helper-functions
         //recursive function used to traverse the amount
         public int getDirectReports(Employee employee)
         {
-/*            if(employee.DirectReports != null)
+            if (employee.DirectReports != null)
             {
-                foreach(Employee directReport in employee.DirectReports)
+                foreach (Employee directReport in employee.DirectReports)
                 {
                     return 1 + getDirectReports(directReport);
                 }
-            }*/
+            }
 
             return 0;
         }

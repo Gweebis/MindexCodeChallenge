@@ -90,6 +90,26 @@ namespace code_challenge.Tests.Integration
         }
 
         [TestMethod]
+        public void GetDirectReports_Returns_Ok()
+        {
+            // Arrange
+            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+            var expectedFirstName = "John";
+            var expectedLastName = "Lennon";
+
+            // Execute
+            var getRequestTask = _httpClient.GetAsync($"api/employee/{employeeId}");
+            var response = getRequestTask.Result;
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var employee = response.DeserializeContent<Employee>();
+            Assert.AreEqual(expectedFirstName, employee.FirstName);
+            Assert.AreEqual(expectedLastName, employee.LastName);
+        }
+
+
+        [TestMethod]
         public void UpdateEmployee_Returns_Ok()
         {
             // Arrange

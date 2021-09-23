@@ -14,13 +14,14 @@ namespace challenge.Data
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+/*        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.DirectReports);
         }
-
+*/
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> DirectReports { get; set; }
         public DbSet<Compensation> Compensations { get; set; }
     }
 }
