@@ -131,7 +131,7 @@ namespace challenge.Controllers
             {
                 foreach (Employee directReport in employee.DirectReports)
                 {
-                    return 1 + getDirectReports(directReport);
+                    return employee.DirectReports.Count + getDirectReports(directReport);
                 }
             }
 
